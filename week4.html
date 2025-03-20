@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First WebApp Week4</title>
+    <style>
+        body {
+            font-family: 'Helvetica', sans-serif;
+            color: #333;
+            background-color: #f4f7fb;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            background-color: #7952a7;
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+        h1 {
+            margin: 0;
+            font-size: 3em;
+        }
+        main {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        section {
+            width: 80%;
+            max-width: 1000px;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            text-align: center;
+        }
+        article {
+            margin-top: 30px;
+            text-align: center;
+        }
+        h3 {
+            font-size: 2em;
+            color: #7145b6;
+            margin-bottom: 15px;
+        }
+        h4 {
+            font-size: 1.5em;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #7f8c8d;
+        }
+        .planet-image {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 20px;
+        }
+        .planet-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+        }
+        footer {
+            background-color: #7952a7;
+            padding: 15px;
+            text-align: center;
+            color: white;
+        }
+        footer p {
+            margin: 0;
+            font-size: 1.1em;
+        }
+        form {
+            margin-top: 40px;
+            display: inline-flex;  
+            flex-direction: column;
+            align-items: center;
+            width: 80%;
+            max-width: 500px;
+            padding: 20px;
+            background-color: rgb(134, 118, 170);
+            border-radius: 8px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        button, input[type="submit"] {
+            margin-top: 20px;
+            padding: 15px 10px;
+            background-color: #7952a7;
+            color: white;
+            font-size: 1.5em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            max-width: 100px;
+            align-self: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Explore Planets in our Solar System</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Our Awesome & Fascinating Neighbors</h2>
+            <article>
+                <h3>Earth</h3>
+                <img src="EARTH.jpg" alt="Earth" class="planet-image">
+                <p>Earth is the third planet from the Sun and the only known celestial body to support life. Its atmosphere is composed of 21% oxygen and 78% nitrogen, with the remaining 1% made up of various gases.</p>
+            </article>
+            <article>
+                <h3>Mars</h3>
+                <h4>The Red Planet</h4>
+                <img src="Mars.jpg" alt="Mars" class="planet-image">
+                <p>Mars is the fourth planet from the Sun and is commonly referred to as the "Red Planet" because of its reddish appearance due to iron oxide (rust) on its surface. It is a focus of current exploration missions.</p>
+            </article>
+            <article>
+                <h3>Jupiter</h3>
+                <img src="Jupiter.jpg" alt="Jupiter" class="planet-image">
+                <p>Jupiter is the fifth and largest planet in our Solar System. Known for its massive size and iconic Great Red Spot, a storm that has been raging for hundreds of years, Jupiter has over 79 known moons.</p>
+            </article>
+        </section>
+        <form action="submit.MyFirstWebbApp.php" method="post" onsubmit="return validatePlanetSelection()">
+            <h2>Sign Up for a Trip to Your Favorite Planet</h2>
+            <label for="Name">Full Name:</label>
+            <input type="text" name="Name" placeholder="Your Name" required>
+            <label for="Email">Email:</label>
+            <input type="email" name="Email" placeholder="Your Email" required>
+            <label for="Phone">Mobile Number:</label>
+            <input type="tel" name="Phone" placeholder="Your Phone" required>
+            <label for="Planet">Choose a Planet:</label>
+            <select name="Planet" id="Planet">
+                <option value="Void">-- Select a Planet --</option> <!-- Added Void/Blank option -->
+                <option value="Earth">Earth</option>
+                <option value="Mars">Mars</option>
+                <option value="Jupiter">Jupiter</option>
+            </select>
+            <textarea name="Message" placeholder="Any other relevant information"></textarea>
+            <input type="submit" value="Sign-Up">
+        </form>
+        <script>
+            function validatePlanetSelection() {
+                const planet = document.getElementById('Planet').value;
+                if (planet === "Void") {
+                    alert("Wrong planet selected. Please choose a valid planet.");
+                    return false;
+                }
+                return true;
+            }
+        </script>
+    </main>
+    <footer>
+        <p>&copy; 2025 My Planet Web App</p>
+    </footer>
+</body>
+</html>
