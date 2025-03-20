@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello World!</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                color: #a33434;
+                background-color: aqua;
+                margin: 0; /* Remove default margin */
+                padding: 0;
+                box-sizing: border-box;
+            }
+            header {
+                background-color: #cbd3db;
+                padding: 20px;
+                text-align: center;
+                position: fixed;
+                width: 100%;
+                top: 0;
+                z-index: 1000; /* Ensure header is on top */
+            }
+            main {
+                padding: 20px;
+                margin-top: 80px; /* Add margin to avoid overlap with fixed header */
+            }
+            footer {
+                background-color: #cd6256;
+                text-align: center;
+                padding: 10px;
+                position: fixed;
+                width: 100%;
+                bottom: 0;
+            }
+            .planet-image {
+                width: 100%;
+                max-width: 300px; /* Increased size */
+                height: auto;
+                display: block;
+                margin: 10px auto;
+            }
+            h1, h2, h3, h4, p {
+                margin: 0 0 10px;
+                padding: 0;
+            }
+            h1 {
+                font-size: 2.5em;
+            }
+            h2 {
+                font-size: 2em;
+            }
+            h3 {
+                font-size: 1.75em;
+            }
+            h4 {
+                font-size: 1.5em;
+            }
+            p {
+                font-size: 1.25em;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1 style="color:Blue;"> Hello World again!</h1>
+        </header>
+        <main>
+            <p>Welcome to my first web app. This is a paragraph of text.</p>
+            <section>
+                <h2>Planets in our Solar System</h2>
+                <article>
+                    <h3>Earth</h3>
+                    <img src="EARTH.jpg" alt="Earth" class="planet-image">
+                    <p style="color: rgb(233, 15, 146);">Earth is the third planet from the Sun and the only astronomical object known to harbor life.</p>
+                </article>
+                <article>
+                    <h3>Mars</h3>
+                    <h4>Knowing that Mars is a planet, what is the first thing that comes to your mind from the Image shown below?</h4>
+                    <img src="Mars.jpg" alt="Mars" class="planet-image">
+                    <p>Mars is the fourth planet from the Sun and is often referred to as the "Red Planet".</p>
+                </article>
+            </section>
+        </main>
+        <footer>
+            <p style="color: black;">&copy; 2025 My First Web App</p>
+        </footer>
+    </body>
+</html>
