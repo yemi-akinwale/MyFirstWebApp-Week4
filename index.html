@@ -147,13 +147,17 @@
             <label for="Phone">Mobile Number:</label>
             <input type="tel" name="Phone" placeholder="Your Phone" required>
             <label for="Planet">Choose a Planet:</label>
-            <select name="Planet" id="Planet" onchange="displayPlanetSummary()">
+            <select name="Planet" id="Planet" onchange="displayPlanetSummary(); calculateCost();">
                 <option value="Void">-- Select a Planet --</option> <!-- Added Void/Blank option -->
-                <option value="Earth">Earth</option>
-                <option value="Mars">Mars</option>
-                <option value="Jupiter">Jupiter</option>
+                <option value="Earth" data-cost="5000">Earth</option>
+                <option value="Mars" data-cost="10000">Mars</option>
+                <option value="Jupiter" data-cost="20000">Jupiter</option>
             </select>
+            <label for="Travelers">Number of Travelers:</label>
+            <input type="range" id="Travelers" name="Travelers" min="1" max="10" value="1" oninput="updateTravelerCount(); calculateCost();">
+            <span id="traveler-count">1</span> traveler(s)
             <textarea name="Message" placeholder="Any other relevant information"></textarea>
+            <h3>Total Cost: $<span id="total-cost">0</span></h3>
             <input type="submit" value="Sign-Up">
         </form>
         <section id="planet-summary" style="margin-top: 20px; font-size: 1.2em; color: #2c3e50; text-align: center;"></section>
@@ -166,6 +170,7 @@
                         email: document.querySelector('input[name="Email"]').value,
                         phone: document.querySelector('input[name="Phone"]').value,
                         planet: document.querySelector('select[name="Planet"]').value,
+                        travelers: document.getElementById('Travelers').value,
                         message: document.querySelector('textarea[name="Message"]').value
                     };
                     localStorage.setItem('formData', JSON.stringify(formData)); // Store data in localStorage
@@ -209,6 +214,20 @@
                 }
 
                 summaryContainer.textContent = summary;
+            }
+
+            function updateTravelerCount() {
+                const travelerCount = document.getElementById('Travelers').value;
+                document.getElementById('traveler-count').textContent = travelerCount;
+            }
+
+            function calculateCost() {
+                const planetSelect = document.getElementById('Planet');
+                const selectedOption = planetSelect.options[planetSelect.selectedIndex];
+                const costPerTraveler = selectedOption.getAttribute('data-cost') || 0;
+                const travelerCount = document.getElementById('Travelers').value;
+                const totalCost = costPerTraveler * travelerCount;
+                document.getElementById('total-cost').textContent = totalCost;
             }
         </script>
     </main>
