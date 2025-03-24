@@ -158,6 +158,28 @@
         </form>
         <section id="planet-summary" style="margin-top: 20px; font-size: 1.2em; color: #2c3e50; text-align: center;"></section>
         <script>
+            document.querySelector('form').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+                if (validatePlanetSelection()) {
+                    const formData = {
+                        name: document.querySelector('input[name="Name"]').value,
+                        email: document.querySelector('input[name="Email"]').value,
+                        phone: document.querySelector('input[name="Phone"]').value,
+                        planet: document.querySelector('select[name="Planet"]').value,
+                        message: document.querySelector('textarea[name="Message"]').value
+                    };
+                    localStorage.setItem('formData', JSON.stringify(formData)); // Store data in localStorage
+                    alert("Form submitted successfully and data saved!");
+                }
+            });
+
+            document.querySelectorAll('input, select, textarea').forEach(input => {
+                input.addEventListener('input', function() {
+                    console.log(`${input.name} updated: ${input.value}`);
+                    // Add real-time validation or UI updates here
+                });
+            });
+
             function validatePlanetSelection() {
                 const planet = document.getElementById('Planet').value;
                 if (planet === "Void") {
