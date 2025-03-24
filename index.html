@@ -123,18 +123,18 @@
             <h2>Our Awesome & Fascinating Neighbors</h2>
             <article>
                 <h3>Earth</h3>
-                <img src="EARTH.jpg" alt="Earth" class="planet-image">
+                <img src="images/EARTH.jpg" alt="Earth" class="planet-image">
                 <p>Earth is the third planet from the Sun and the only known celestial body to support life. Its atmosphere is composed of 21% oxygen and 78% nitrogen, with the remaining 1% made up of various gases.</p>
             </article>
             <article>
                 <h3>Mars</h3>
                 <h4>The Red Planet</h4>
-                <img src="Mars.jpg" alt="Mars" class="planet-image">
+                <img src="images/Mars.jpg" alt="Mars" class="planet-image">
                 <p>Mars is the fourth planet from the Sun and is commonly referred to as the "Red Planet" because of its reddish appearance due to iron oxide (rust) on its surface. It is a focus of current exploration missions.</p>
             </article>
             <article>
                 <h3>Jupiter</h3>
-                <img src="Jupiter.jpg" alt="Jupiter" class="planet-image">
+                <img src="images/Jupiter.jpg" alt="Jupiter" class="planet-image">
                 <p>Jupiter is the fifth and largest planet in our Solar System. Known for its massive size and iconic Great Red Spot, a storm that has been raging for hundreds of years, Jupiter has over 79 known moons.</p>
             </article>
         </section>
@@ -147,7 +147,7 @@
             <label for="Phone">Mobile Number:</label>
             <input type="tel" name="Phone" placeholder="Your Phone" required>
             <label for="Planet">Choose a Planet:</label>
-            <select name="Planet" id="Planet">
+            <select name="Planet" id="Planet" onchange="displayPlanetSummary()">
                 <option value="Void">-- Select a Planet --</option> <!-- Added Void/Blank option -->
                 <option value="Earth">Earth</option>
                 <option value="Mars">Mars</option>
@@ -156,6 +156,7 @@
             <textarea name="Message" placeholder="Any other relevant information"></textarea>
             <input type="submit" value="Sign-Up">
         </form>
+        <section id="planet-summary" style="margin-top: 20px; font-size: 1.2em; color: #2c3e50; text-align: center;"></section>
         <script>
             function validatePlanetSelection() {
                 const planet = document.getElementById('Planet').value;
@@ -164,6 +165,28 @@
                     return false;
                 }
                 return true;
+            }
+
+            function displayPlanetSummary() {
+                const planet = document.getElementById('Planet').value;
+                const summaryContainer = document.getElementById('planet-summary');
+                let summary = '';
+
+                switch (planet) {
+                    case 'Earth':
+                        summary = 'Earth is the third planet from the Sun and the only known celestial body to support life.';
+                        break;
+                    case 'Mars':
+                        summary = 'Mars is the fourth planet from the Sun, known as the "Red Planet" due to its reddish appearance.';
+                        break;
+                    case 'Jupiter':
+                        summary = 'Jupiter is the fifth and largest planet in our Solar System, famous for its Great Red Spot.';
+                        break;
+                    default:
+                        summary = '';
+                }
+
+                summaryContainer.textContent = summary;
             }
         </script>
     </main>
